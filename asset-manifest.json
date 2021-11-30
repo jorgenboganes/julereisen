@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/julereisen/static/css/main.d36ae3cd.chunk.css",
-    "main.js": "/julereisen/static/js/main.454c177c.chunk.js",
-    "main.js.map": "/julereisen/static/js/main.454c177c.chunk.js.map",
-    "runtime-main.js": "/julereisen/static/js/runtime-main.a8758306.js",
-    "runtime-main.js.map": "/julereisen/static/js/runtime-main.a8758306.js.map",
-    "static/js/2.9bc14c37.chunk.js": "/julereisen/static/js/2.9bc14c37.chunk.js",
-    "static/js/2.9bc14c37.chunk.js.map": "/julereisen/static/js/2.9bc14c37.chunk.js.map",
-    "static/js/3.3f663462.chunk.js": "/julereisen/static/js/3.3f663462.chunk.js",
-    "static/js/3.3f663462.chunk.js.map": "/julereisen/static/js/3.3f663462.chunk.js.map",
-    "index.html": "/julereisen/index.html",
-    "static/css/main.d36ae3cd.chunk.css.map": "/julereisen/static/css/main.d36ae3cd.chunk.css.map",
-    "static/js/2.9bc14c37.chunk.js.LICENSE.txt": "/julereisen/static/js/2.9bc14c37.chunk.js.LICENSE.txt"
+    "main.css": "/julereisen.no/static/css/main.d36ae3cd.chunk.css",
+    "main.js": "/julereisen.no/static/js/main.454c177c.chunk.js",
+    "main.js.map": "/julereisen.no/static/js/main.454c177c.chunk.js.map",
+    "runtime-main.js": "/julereisen.no/static/js/runtime-main.ad6d2447.js",
+    "runtime-main.js.map": "/julereisen.no/static/js/runtime-main.ad6d2447.js.map",
+    "static/js/2.c9cb6757.chunk.js": "/julereisen.no/static/js/2.c9cb6757.chunk.js",
+    "static/js/2.c9cb6757.chunk.js.map": "/julereisen.no/static/js/2.c9cb6757.chunk.js.map",
+    "static/js/3.3f663462.chunk.js": "/julereisen.no/static/js/3.3f663462.chunk.js",
+    "static/js/3.3f663462.chunk.js.map": "/julereisen.no/static/js/3.3f663462.chunk.js.map",
+    "index.html": "/julereisen.no/index.html",
+    "static/css/main.d36ae3cd.chunk.css.map": "/julereisen.no/static/css/main.d36ae3cd.chunk.css.map",
+    "static/js/2.c9cb6757.chunk.js.LICENSE.txt": "/julereisen.no/static/js/2.c9cb6757.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.a8758306.js",
-    "static/js/2.9bc14c37.chunk.js",
+    "static/js/runtime-main.ad6d2447.js",
+    "static/js/2.c9cb6757.chunk.js",
     "static/css/main.d36ae3cd.chunk.css",
     "static/js/main.454c177c.chunk.js"
   ]
