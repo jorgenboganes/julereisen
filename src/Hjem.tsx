@@ -5,62 +5,70 @@ import styled from "styled-components"
 type OppgaveEntry = {
     dag: number;
     beskrivelse: string;
+    hint: string;
     svar: string;
 }
 const data: OppgaveEntry[] = [
-    { dag: 1, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 2, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 3, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 4, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 5, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 6, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 7, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 8, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 9, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 10, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 11, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 12, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 13, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 14, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 15, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 16, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 17, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 18, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 19, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 20, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 21, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 22, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 23, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
-    { dag: 24, beskrivelse: "Byen julenissen er født", svar: "Oklahoma"},
+    { dag: 1, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 2, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 3, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 4, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 5, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 6, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 7, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 8, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 9, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 10, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 11, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 12, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 13, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 14, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 15, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 16, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 17, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 18, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 19, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 20, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 21, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 22, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 23, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
+    { dag: 24, beskrivelse: "Kommer snart", hint: "-", svar: "-"},
 ]
 
 const Div = styled.div`
   margin-left: auto;
   margin-right: auto;
-  max-width: 500px;
+  max-width: 300px;
+`
+
+const Bordered = styled.div`
+  border: 1px solid white;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  background-color: #43586b;
 `
 const Grid = styled.div`
   display: flex;
   flex-wrap: wrap;
 
   margin: auto;
+  margin-bottom: 15px;
 `
 const Item = styled.div`
     flex: 1 0 21%; /* explanation below */
     margin: 5px;
-    height: 100px;
+    height: 75px;
     background-color: grey;
     text-align: center;
     color: white;
     font-size: 36px;
     
-  line-height: 100px;
+  line-height: 75px;
 `
 export const Hjem = () => {
     const d = new Date();
-    var dato = d.getDate();
-    dato = 5
-
+    const klokkeslett = d.getHours()
+    const dato = (d.getDate() > 24) ? 0 : d.getDate();
     const [oppgaveValgt, setOppgaveValgt] = useState<number>(0)
 
     return (
@@ -73,9 +81,10 @@ export const Hjem = () => {
                     <Item
                         onClick={() => { if ((element.dag <= dato)) { setOppgaveValgt(element.dag) } }}
                         style={{
-                            backgroundColor: (element.dag === dato) ? "#f8b229" : ((element.dag < dato) ? "#cdd873" : "#901a1a"),
-                            color: ((element.dag === dato) ? "white" : "black"),
-                            opacity: ((element.dag > dato) ? 0.15 : 1)
+                            backgroundColor: (element.dag === dato) ? "#fedfb0" : ((element.dag < dato) ? "#344d2f" : "#a81817"),
+                            color: ((element.dag < dato) ? "#e9e5e1" : "black"),
+                            opacity: ((element.dag > dato) ? 0.1 : 1),
+                            cursor:  ((element.dag <= dato) ? "pointer" : "default")
                         }}
                     >
                         {element.dag}
@@ -87,14 +96,29 @@ export const Hjem = () => {
             {oppgaveValgt !== 0 && (
                 <div>
                     <Link onClick={() => setOppgaveValgt(0)} to={""}>Gå tilbake til oppgavene</Link>
-                    <h3>Oppgave for {oppgaveValgt}. Desember:</h3>
-                    <p>{data.find((element) => element.dag === oppgaveValgt)?.beskrivelse}</p>
-                    {oppgaveValgt < dato && (
-                        <div>
-                            <h3>Svar:</h3>
-                            <p>{data.find((element) => element.dag === oppgaveValgt)?.svar}</p>
-                        </div>
-                    )}
+                    <Bordered>
+                        <h3>Oppgave for {oppgaveValgt}. Desember:</h3>
+                        <p>{data.find((element) => element.dag === oppgaveValgt)?.beskrivelse}</p>
+                        {oppgaveValgt < dato && (
+                            <div>
+                                <h3>Svar:</h3>
+                                <p>{data.find((element) => element.dag === oppgaveValgt)?.svar}</p>
+                            </div>
+                        )}
+                        {oppgaveValgt === dato && (
+                            <div>
+                                <h3>Hint:</h3>
+                                {klokkeslett >= 18 && (
+                                    <p>{data.find((element) => element.dag === oppgaveValgt)?.hint}</p>
+                                )}
+                                {klokkeslett < 18 && (
+                                    <p>Kommer klokken 18:00</p>
+                                )}
+                                <h3>Har du funnet ut løsningen?</h3>
+                                <a href="https://forms.gle/z25GJuVRQbXFwzAu8">Send inn svaret ditt her</a>
+                            </div>
+                        )}
+                    </Bordered>
                 </div>
             )}
         </Div>
