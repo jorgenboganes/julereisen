@@ -5,9 +5,7 @@ type TopplisteEntry = {
     navn: string;
     score: number;
 }
-const data: TopplisteEntry[] = [
-    { navn: "-", score: 0},
-  ]
+const data: TopplisteEntry[] = [{ navn: "-", score: 0},]
 
 export const Toppliste = () => {
 
