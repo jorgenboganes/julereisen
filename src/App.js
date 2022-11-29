@@ -11,7 +11,7 @@ import {
 function App() {
   return (
     <div className="App" style={{height: "100%"}}>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={<Hjem/>} />
           <Route path="/julereisen" element={<Hjem/>} />
