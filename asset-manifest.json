@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/julereisen/static/css/main.19d4eceb.chunk.css",
-    "main.js": "/julereisen/static/js/main.46c5299a.chunk.js",
-    "main.js.map": "/julereisen/static/js/main.46c5299a.chunk.js.map",
+    "main.js": "/julereisen/static/js/main.3046e3dd.chunk.js",
+    "main.js.map": "/julereisen/static/js/main.3046e3dd.chunk.js.map",
     "runtime-main.js": "/julereisen/static/js/runtime-main.a8758306.js",
     "runtime-main.js.map": "/julereisen/static/js/runtime-main.a8758306.js.map",
     "static/js/2.3f5d041a.chunk.js": "/julereisen/static/js/2.3f5d041a.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.a8758306.js",
     "static/js/2.3f5d041a.chunk.js",
     "static/css/main.19d4eceb.chunk.css",
-    "static/js/main.46c5299a.chunk.js"
+    "static/js/main.3046e3dd.chunk.js"
   ]
 }
