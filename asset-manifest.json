@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/julereisen/static/css/main.19d4eceb.chunk.css",
-    "main.js": "/julereisen/static/js/main.c506f499.chunk.js",
-    "main.js.map": "/julereisen/static/js/main.c506f499.chunk.js.map",
-    "runtime-main.js": "/julereisen/static/js/runtime-main.9cd92473.js",
-    "runtime-main.js.map": "/julereisen/static/js/runtime-main.9cd92473.js.map",
-    "static/js/2.3d9545c5.chunk.js": "/julereisen/static/js/2.3d9545c5.chunk.js",
-    "static/js/2.3d9545c5.chunk.js.map": "/julereisen/static/js/2.3d9545c5.chunk.js.map",
-    "static/js/3.558b1af3.chunk.js": "/julereisen/static/js/3.558b1af3.chunk.js",
-    "static/js/3.558b1af3.chunk.js.map": "/julereisen/static/js/3.558b1af3.chunk.js.map",
+    "main.js": "/julereisen/static/js/main.46c5299a.chunk.js",
+    "main.js.map": "/julereisen/static/js/main.46c5299a.chunk.js.map",
+    "runtime-main.js": "/julereisen/static/js/runtime-main.a8758306.js",
+    "runtime-main.js.map": "/julereisen/static/js/runtime-main.a8758306.js.map",
+    "static/js/2.3f5d041a.chunk.js": "/julereisen/static/js/2.3f5d041a.chunk.js",
+    "static/js/2.3f5d041a.chunk.js.map": "/julereisen/static/js/2.3f5d041a.chunk.js.map",
+    "static/js/3.3f663462.chunk.js": "/julereisen/static/js/3.3f663462.chunk.js",
+    "static/js/3.3f663462.chunk.js.map": "/julereisen/static/js/3.3f663462.chunk.js.map",
     "index.html": "/julereisen/index.html",
     "static/css/main.19d4eceb.chunk.css.map": "/julereisen/static/css/main.19d4eceb.chunk.css.map",
-    "static/js/2.3d9545c5.chunk.js.LICENSE.txt": "/julereisen/static/js/2.3d9545c5.chunk.js.LICENSE.txt",
+    "static/js/2.3f5d041a.chunk.js.LICENSE.txt": "/julereisen/static/js/2.3f5d041a.chunk.js.LICENSE.txt",
     "static/media/logo3.8f670def.png": "/julereisen/static/media/logo3.8f670def.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.9cd92473.js",
-    "static/js/2.3d9545c5.chunk.js",
+    "static/js/runtime-main.a8758306.js",
+    "static/js/2.3f5d041a.chunk.js",
     "static/css/main.19d4eceb.chunk.css",
-    "static/js/main.c506f499.chunk.js"
+    "static/js/main.46c5299a.chunk.js"
   ]
 }
