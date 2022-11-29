@@ -11,7 +11,13 @@ import {
 function App() {
   return (
     <div className="App" style={{height: "100%"}}>
-      <Hjem/>
+      <Router basename={window.location.pathname || ''}>
+        <Routes>
+          <Route exact path="/" element={<Hjem/>} />
+          <Route exact path="/julereisen" element={<Hjem/>} />
+          <Route exact path="/toppliste" element={<Toppliste/>} />
+        </Routes>
+      </Router>
     </div>
   );
 }
