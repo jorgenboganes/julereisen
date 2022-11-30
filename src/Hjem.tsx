@@ -10,7 +10,7 @@ type OppgaveEntry = {
     svar: string;
 }
 const data: OppgaveEntry[] = [
-    { dag: 1, beskrivelse: "Kommer snart...", hint: "-", svar: "-"},
+    { dag: 1, beskrivelse: "Julen kommer tidligere og tidligere for hvert eneste år, men noen tradisjoner bryter vi ikke med. Det er første desember og du finner frem dine fineste reisebukser og børster støv av pass og trillekoffert. Årets reise begynner i dét du treffer på Guiellermo som sier at han i nabolandet ble den første i det første selv om han bare ble nest best. Nå vil han ha deg med til der hvor landsmannen ønsker å få det endelige symbolet på at han er best, i det som trolig er hans siste. Du løser reisenøtten, men avstår selve reisen. I stedet reiser du til Bergen hvor du har hørt at reisen fortsetter i morgen.", hint: "Byen du skal til er ikke hovedstad, men vil likevel være i sentrum nå Jules Rimet løftes for 22 gang senere i måneden.", svar: "-"},
     { dag: 2, beskrivelse: "Kommer snart...", hint: "-", svar: "-"},
     { dag: 3, beskrivelse: "Kommer snart...", hint: "-", svar: "-"},
     { dag: 4, beskrivelse: "Kommer snart...", hint: "-", svar: "-"},
@@ -42,14 +42,18 @@ const Div = styled.div`
   max-width: 400px;
 `
 
+const Oppgaver = styled.div`
+  margin-top: 2rem;
+`
 const Bordered = styled.div`
   border: 1px solid white;
-  padding-bottom: 20px;
   background-color: #43586b;
   border-radius: 15px;
   width: 90%;
   margin: auto;
   margin-top: 20px;
+  padding: 5px 20px;
+  padding-bottom: 20px;
 `
 const Grid = styled.div`
   display: flex;
@@ -62,7 +66,7 @@ const ItemLocked = styled.div`
     color: white;
     background-color: black;
     border: 1px solid gold;
-    opacity: 0.2;
+    opacity: 0.05;
     user-select: none;
 
     text-align: center;
@@ -74,15 +78,15 @@ const ItemLocked = styled.div`
     height: 65px;
     width: 25px;
 `
-const ItemUnlocked = styled.div`
-    color: white;
-    background-color: black;
-    border: 1px solid gold;
-    opacity: 0.2;
+const ItemToday = styled.div`
+    color: #936e00;
+    background-color: #ffe974;;
+    border: 1px solid black;
+    user-select: none;
     cursor: pointer;
 
     text-align: center;
-    font-size: 1rem;
+    font-size: 36px;
     line-height: 65px;
     border-radius: 15px;
     flex: 1 0 21%; /* explanation below */
@@ -91,9 +95,9 @@ const ItemUnlocked = styled.div`
     width: 25px;
 `
 
-const ItemToday = styled.div`
-    color: green;
-    background-color: white;
+const ItemUnlocked = styled.div`
+    color: #9bff9b;
+    background-color: #57b96f;
     border: 1px solid green;
     cursor: pointer;
 
@@ -122,41 +126,38 @@ const Text =  styled.p`
 export const Hjem = () => {
     const d = new Date();
     const klokkeslett = d.getHours()
-    const dato = (d.getDate() > 24) ? 0 : d.getDate();
+    const dato = 1; //(d.getDate() > 24) ? 0 : d.getDate();
     const [oppgaveValgt, setOppgaveValgt] = useState<number>(0)
 
-    return(
-        <Div>
-            <LogoImg src={logo}></LogoImg>
-            <Text>Kommer snart...</Text>
-        </Div>
-    )
     return (
         <Div>
+        <LogoImg src={logo}></LogoImg>
             {oppgaveValgt === 0 && (
                 <div>
             <h3>Velg en luke</h3>
             <Grid>
                 {data.map((element) => {
-                    if(element.dag  === 23){
+                    if(element.dag  === dato){
                         return <ItemToday
                         onClick={() => {setOppgaveValgt(element.dag)}}
                         >
                             {element.dag}
-                        </ItemToday>
-                    }else if(element.dag  !== dato){
-                        return <ItemLocked
-                        onClick={() => { if ((element.dag <= dato)) { setOppgaveValgt(element.dag) } }}
-                        >
+                        </ItemToday>;
+                    }else if(element.dag  <= dato){
+                        return <ItemUnlocked
+                            onClick={() => { if ((element.dag <= dato)) { setOppgaveValgt(element.dag) } }}
+                            >
                             {element.dag}
-                        </ItemLocked>
+                        </ItemUnlocked>
+                    }else{
+                        return <ItemLocked>{element.dag}</ItemLocked>
                     }
                 })}
             </Grid>
             <Link to="/toppliste">Klikk her for å se topplisten</Link></div>
             )}
             {oppgaveValgt !== 0 && (
-                <div>
+                <Oppgaver>
                     <Link onClick={() => setOppgaveValgt(0)} to={""}>Gå tilbake til oppgavene</Link>
                     <Bordered>
                         <h3>Oppgave for {oppgaveValgt}. Desember:</h3>
@@ -181,7 +182,7 @@ export const Hjem = () => {
                             </div>
                         )}
                     </Bordered>
-                </div>
+                </Oppgaver>
             )}
         </Div>
     )
