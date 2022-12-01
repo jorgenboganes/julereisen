@@ -129,6 +129,8 @@ export const Hjem = () => {
     const dato = (d.getDate() > 24) ? 0 : d.getDate();
     const [oppgaveValgt, setOppgaveValgt] = useState<number>(0)
 
+    console.log((oppgaveValgt === dato && klokkeslett >= 8))
+
     return (
         <Div>
         <LogoImg src={logo}></LogoImg>
@@ -137,13 +139,13 @@ export const Hjem = () => {
             <h3>Velg en luke</h3>
             <Grid>
                 {data.map((element) => {
-                    if(element.dag  === dato){
+                    if(element.dag  === dato && klokkeslett >= 8){
                         return <ItemToday
                         onClick={() => {setOppgaveValgt(element.dag)}}
                         >
                             {element.dag}
                         </ItemToday>;
-                    }else if(element.dag  <= dato){
+                    }else if(element.dag  < dato){
                         return <ItemUnlocked
                             onClick={() => { if ((element.dag <= dato)) { setOppgaveValgt(element.dag) } }}
                             >
@@ -161,11 +163,11 @@ export const Hjem = () => {
                     <Link onClick={() => setOppgaveValgt(0)} to={""}>Gå tilbake til oppgavene</Link>
                     <Bordered>
                         <h3>Oppgave for {oppgaveValgt}. Desember:</h3>
-                        {(oppgaveValgt === dato && klokkeslett >= 8) || (oppgaveValgt < dato) && (
+                        {((oppgaveValgt === dato && klokkeslett >= 8) || (oppgaveValgt < dato)) && (
                             <p>{data.find((element) => element.dag === oppgaveValgt)?.beskrivelse}</p>
                         )}
-                        {(oppgaveValgt === dato && klokkeslett <= 8) && (
-                            <p>Kommer kl. 8</p>
+                        {(oppgaveValgt === dato && klokkeslett < 8) && (
+                            <p>Kommer kl. 08:00</p>
                         )}
                         {oppgaveValgt < dato && (
                             <div>
