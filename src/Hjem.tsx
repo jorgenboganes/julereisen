@@ -10,7 +10,7 @@ type OppgaveEntry = {
     svar: string;
 }
 const data: OppgaveEntry[] = [
-    { dag: 1, beskrivelse: "Julen kommer tidligere og tidligere for hvert eneste år, men noen tradisjoner bryter vi ikke med. Det er første desember og du finner frem dine fineste reisebukser og børster støv av pass og trillekoffert. Årets reise begynner i dét du treffer på Guiellermo som sier at han i nabolandet ble den første i det første selv om han bare ble nest best. Nå vil han ha deg med til der hvor landsmannen ønsker å få det endelige symbolet på at han er best, i det som trolig er hans siste. Du løser reisenøtten, men avstår selve reisen. I stedet reiser du til Bergen hvor du har hørt at reisen fortsetter i morgen.", hint: "Byen du skal til er ikke hovedstad, men vil likevel være i sentrum nå Jules Rimet løftes for 22 gang senere i måneden.", svar: "-"},
+    { dag: 1, beskrivelse: "Julen kommer tidligere og tidligere for hvert eneste år, men noen tradisjoner bryter vi ikke med. Det er første desember og du finner frem dine fineste reisebukser og børster støv av pass og trillekoffert. Årets reise begynner idet du treffer på Guillermo som sier at han en gang i hans naboland, ble den første i det første selv om han bare ble nummer to. Nå vil Guillermo ha deg med dit hvor landsmannen ønsker å få det manglende symbolet på at han er aller best, i det som trolig er hans siste. Du løser reisenøtten, men avstår fra å reise. I stedet reiser du til Bergen hvor du har hørt at reisen fortsetter i morgen.", hint: "Byen du skal til er ikke hovedstad, men vil likevel være i sentrum nå Jules Rimet løftes for 22 gang senere i måneden.", svar: "Lusail, Qatar"},
     { dag: 2, beskrivelse: "Kommer snart...", hint: "-", svar: "-"},
     { dag: 3, beskrivelse: "Kommer snart...", hint: "-", svar: "-"},
     { dag: 4, beskrivelse: "Kommer snart...", hint: "-", svar: "-"},
@@ -126,7 +126,7 @@ const Text =  styled.p`
 export const Hjem = () => {
     const d = new Date();
     const klokkeslett = d.getHours()
-    const dato = 1; //(d.getDate() > 24) ? 0 : d.getDate();
+    const dato = (d.getDate() > 24) ? 0 : d.getDate();
     const [oppgaveValgt, setOppgaveValgt] = useState<number>(0)
 
     return (
@@ -161,7 +161,12 @@ export const Hjem = () => {
                     <Link onClick={() => setOppgaveValgt(0)} to={""}>Gå tilbake til oppgavene</Link>
                     <Bordered>
                         <h3>Oppgave for {oppgaveValgt}. Desember:</h3>
-                        <p>{data.find((element) => element.dag === oppgaveValgt)?.beskrivelse}</p>
+                        {(oppgaveValgt === dato && klokkeslett >= 8) || (oppgaveValgt < dato) && (
+                            <p>{data.find((element) => element.dag === oppgaveValgt)?.beskrivelse}</p>
+                        )}
+                        {(oppgaveValgt === dato && klokkeslett <= 8) && (
+                            <p>Kommer kl. 8</p>
+                        )}
                         {oppgaveValgt < dato && (
                             <div>
                                 <h3>Svar:</h3>
@@ -178,7 +183,7 @@ export const Hjem = () => {
                                     <p>Kommer klokken 18:00</p>
                                 )}
                                 <h3>Har du funnet ut løsningen?</h3>
-                                <a href="https://forms.gle/z25GJuVRQbXFwzAu8">Send inn svaret ditt her</a>
+                                <a href="https://forms.gle/4fshYR6F6JTAwfWw9">Send inn svaret ditt her</a>
                             </div>
                         )}
                     </Bordered>
