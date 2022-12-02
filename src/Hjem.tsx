@@ -44,7 +44,7 @@ const Div = styled.div`
 
 const Blurry = styled.p`
     color: transparent;
-    text-shadow: 0 0 25px #fff;
+    text-shadow: 0 0 25px #c0e7ff;
     font-size: 20px;
     user-select: none;  
 `
@@ -57,12 +57,16 @@ const Oppgaver = styled.div`
   margin-top: 2rem;
 `
 const Bordered = styled.div`
-border: 1px solid white;
-background-color: rgb(67, 88, 107);
-border-radius: 15px;
-width: 80%;
-margin: 20px auto 20px auto;
-padding: 5px 20px 20px;
+    background-color: #62a2bba1;
+    border-radius: 10px;
+    width: 80%;
+    margin: 20px auto 20px auto;
+    padding: 5px 20px 20px;
+    color: #c0e7ff;
+
+    h3 {
+        color: #fff;
+    }
 `
 const Grid = styled.div`
   display: flex;
@@ -70,54 +74,53 @@ const Grid = styled.div`
   margin: auto;
   margin-bottom: 15px;
   width: 80%;
+  justify-content: space-around;
 `
 const ItemLocked = styled.div`
-    color: white;
-    background-color: black;
-    border: 1px solid gold;
-    opacity: 0.05;
+    color: black;
+    background-color: transparent;
+    opacity: 0.18;
     user-select: none;
+    font-weight: 600;
+    box-shadow: inset -1px -1px 3px black;
 
     text-align: center;
     font-size: 36px;
-    line-height: 65px;
-    border-radius: 15px;
-    flex: 1 0 21%; /* explanation below */
+    line-height: 60px;
+    border-radius: 5px;
     margin: 5px;
-    height: 65px;
-    width: 25px;
+    height: 60px;
+    width: 60px;
 `
 const ItemToday = styled.div`
-    color: #936e00;
-    background-color: #ffe974;;
-    border: 1px solid black;
+    color: #39506f;
+    background-color: #bfedff;
     user-select: none;
+    font-weight: 600;
     cursor: pointer;
 
     text-align: center;
     font-size: 36px;
-    line-height: 65px;
-    border-radius: 15px;
-    flex: 1 0 21%; /* explanation below */
+    line-height: 60px;
+    border-radius: 5px;
     margin: 5px;
-    height: 65px;
-    width: 25px;
+    height: 60px;
+    width: 60px;
 `
 
 const ItemUnlocked = styled.div`
-    color: #9bff9b;
-    background-color: #57b96f;
-    border: 1px solid green;
+    color: white;
+    background-color: #62a2bba1;
     cursor: pointer;
+    font-weight: 600;
 
     text-align: center;
     font-size: 36px;
-    line-height: 65px;
-    border-radius: 15px;
-    flex: 1 0 21%; /* explanation below */
+    line-height: 60px;
+    border-radius: 5px;
     margin: 5px;
-    height: 65px;
-    width: 25px;
+    height: 60px;
+    width: 60px;
 `
 
 const LogoImg =  styled.img`
