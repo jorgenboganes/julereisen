@@ -171,6 +171,8 @@ export const Hjem = () => {
                         )}
                         {oppgaveValgt < dato && (
                             <div>
+                                <h3>Hint:</h3>
+                                <p>{data.find((element) => element.dag === oppgaveValgt)?.hint}</p>
                                 <h3>Svar:</h3>
                                 <p>{data.find((element) => element.dag === oppgaveValgt)?.svar}</p>
                             </div>
