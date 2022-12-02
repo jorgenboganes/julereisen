@@ -170,7 +170,7 @@ export const Hjem = () => {
             )}
             {oppgaveValgt !== 0 && (
                 <Oppgaver>
-                    <Link onClick={() => setOppgaveValgt(0)} to={""}>Gå tilbake til oppgavene</Link>
+                    <Link onClick={() => {setOppgaveValgt(0); setVisSvar(false);}} to={""}>Gå tilbake til oppgavene</Link>
                     <Bordered>
                         <h3>Oppgave for {oppgaveValgt}. Desember:</h3>
                         {((oppgaveValgt === dato && klokkeslett >= 8) || (oppgaveValgt < dato)) && (
