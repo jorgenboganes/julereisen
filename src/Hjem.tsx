@@ -42,6 +42,17 @@ const Div = styled.div`
   max-width: 400px;
 `
 
+const Blurry = styled.p`
+    color: transparent;
+    text-shadow: 0 0 25px #fff;
+    font-size: 20px;
+    user-select: none;  
+`
+const Answer = styled.p`
+    font-size: 20px;
+`
+
+
 const Oppgaver = styled.div`
   margin-top: 2rem;
 `
@@ -128,8 +139,7 @@ export const Hjem = () => {
     const klokkeslett = d.getHours()
     const dato = (d.getDate() > 24) ? 0 : d.getDate();
     const [oppgaveValgt, setOppgaveValgt] = useState<number>(0)
-
-    console.log((oppgaveValgt === dato && klokkeslett >= 8))
+    const [visSvar, setVisSvar] = useState<boolean>(false)
 
     return (
         <Div>
@@ -174,7 +184,13 @@ export const Hjem = () => {
                                 <h3>Hint:</h3>
                                 <p>{data.find((element) => element.dag === oppgaveValgt)?.hint}</p>
                                 <h3>Svar:</h3>
-                                <p>{data.find((element) => element.dag === oppgaveValgt)?.svar}</p>
+                                <button onClick={() => setVisSvar(!visSvar)}>{visSvar ? 'Skjul' : 'Vis'} svar</button>
+                                {!visSvar && (
+                                    <Blurry>{data.find((element) => element.dag === oppgaveValgt)?.svar}</Blurry>
+                                )}
+                                {visSvar && (
+                                    <Answer>{data.find((element) => element.dag === oppgaveValgt)?.svar}</Answer>
+                                )}
                             </div>
                         )}
                         {oppgaveValgt === dato && (
