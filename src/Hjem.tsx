@@ -78,7 +78,7 @@ const Grid = styled.div`
 `
 const ItemLocked = styled.div`
     color: black;
-    background-color: transparent;
+    background-color: #0000008a;
     opacity: 0.18;
     user-select: none;
     font-weight: 600;
