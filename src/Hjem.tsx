@@ -57,14 +57,12 @@ const Oppgaver = styled.div`
   margin-top: 2rem;
 `
 const Bordered = styled.div`
-  border: 1px solid white;
-  background-color: #43586b;
-  border-radius: 15px;
-  width: 90%;
-  margin: auto;
-  margin-top: 20px;
-  padding: 5px 20px;
-  padding-bottom: 20px;
+border: 1px solid white;
+background-color: rgb(67, 88, 107);
+border-radius: 15px;
+width: 80%;
+margin: 20px auto 20px auto;
+padding: 5px 20px 20px;
 `
 const Grid = styled.div`
   display: flex;
