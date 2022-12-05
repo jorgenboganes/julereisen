@@ -7,6 +7,43 @@ type TopplisteEntry = {
     score: number;
 }
 
+const Entry = styled.p`
+    width: 280px;
+    margin: auto;
+    background-color: #8080805e;
+    padding: 0.5rem;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    color: white;
+`
+
+const First = styled.p`
+    width: 280px;
+    margin: auto;
+    background-color: #ffcc08e6;
+    padding: 1.25rem 0.5rem;
+    border-radius: 20px;
+    margin-bottom:10px;
+    color: white;
+`
+const Second = styled.p`
+    width: 280px;
+    margin: auto;
+    background-color: #a6a295e6;
+    padding: 1rem 0.5rem;
+    border-radius: 20px;
+    margin-bottom:10px;
+    color: white;
+`
+const Third = styled.p`
+    width: 280px;
+    margin: auto;
+    background-color: #ca5600b5;
+    padding: 0.75rem 0.5rem;
+    border-radius: 20px;
+    margin-bottom:10px;
+    color: white;
+`
 
 const Topp = styled.div`
   margin-top: 2rem;
@@ -108,7 +145,20 @@ export const Toppliste = () => {
                 <h1>Toppliste</h1>
                 <h5>Oppdatert: 05/12/2022</h5>
                 {
-                    data.slice(0, 10).sort(function (x, y) { return y.score - x.score; }).map((it, index) => (<p>{index + 1}: {it.navn}: {it.score}p</p>))
+                    data.sort(function (x, y) { return y.score - x.score; }).map((it, index) => 
+                        {
+                            switch(index){
+                                case 0:
+                                    return <First>{index + 1}: {it.navn}: {it.score}</First>
+                                case 1:
+                                    return <Second>{index + 1}: {it.navn}: {it.score}</Second>
+                                case 2:
+                                    return <Third>{index + 1}: {it.navn}: {it.score}</Third>
+                                default:
+                                    return <Entry>{index + 1}: {it.navn}: {it.score}</Entry>
+                            }
+                        }
+                    )
                 }
             </Topp>
         </div>

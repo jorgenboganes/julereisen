@@ -127,14 +127,6 @@ const LogoImg =  styled.img`
     width: 100%;
     margin: auto;
 `
-
-
-const Text =  styled.p`
-    width: 100%;
-    margin-top: 50%;
-    font-size: 2rem;
-`
-
 export const Hjem = () => {
     const d = new Date();
     const klokkeslett = d.getHours()
