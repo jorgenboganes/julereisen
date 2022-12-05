@@ -6,6 +6,8 @@ type TopplisteEntry = {
     navn: string;
     score: number;
 }
+
+
 const Topp = styled.div`
   margin-top: 2rem;
 `
