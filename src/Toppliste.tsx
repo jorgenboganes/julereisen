@@ -149,13 +149,13 @@ export const Toppliste = () => {
                         {
                             switch(index){
                                 case 0:
-                                    return <First>{index + 1}. {it.navn}: {it.score}</First>
+                                    return <First>{index + 1}. {it.navn}, {it.score}p</First>
                                 case 1:
-                                    return <Second>{index + 1}: {it.navn}: {it.score}</Second>
+                                    return <Second>{index + 1}. {it.navn}, {it.score}p</Second>
                                 case 2:
-                                    return <Third>{index + 1}: {it.navn}: {it.score}</Third>
+                                    return <Third>{index + 1}. {it.navn}, {it.score}p</Third>
                                 default:
-                                    return <Entry>{index + 1}: {it.navn}: {it.score}</Entry>
+                                    return <Entry>{index + 1}. {it.navn}, {it.score}p</Entry>
                             }
                         }
                     )
