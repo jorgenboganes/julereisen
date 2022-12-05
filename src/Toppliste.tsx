@@ -106,7 +106,7 @@ export const Toppliste = () => {
             <Topp>
                 <Link to="/julereisen">Gå tilbake til oppgavene</Link>
                 <h1>Toppliste</h1>
-                <h5>Oppdatert: 30/11/2022</h5>
+                <h5>Oppdatert: 05/12/2022</h5>
                 {
                     data.slice(0, 10).sort(function (x, y) { return y.score - x.score; }).map((it, index) => (<p>{index + 1}: {it.navn}: {it.score}p</p>))
                 }
