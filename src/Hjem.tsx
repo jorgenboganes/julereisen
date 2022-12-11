@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components"
 import logo from './logo3.png'; 
 
@@ -75,133 +75,159 @@ const Grid = styled.div`
   margin-bottom: 15px;
   width: 80%;
   justify-content: space-around;
-`
+`;
 const ItemLocked = styled.div`
-    color: black;
-    background-color: #0000008a;
-    opacity: 0.18;
-    user-select: none;
-    font-weight: 600;
-    box-shadow: inset -1px -1px 3px black;
+  color: black;
+  background-color: #0000008a;
+  opacity: 0.18;
+  user-select: none;
+  font-weight: 600;
+  box-shadow: inset -1px -1px 3px black;
 
-    text-align: center;
-    font-size: 36px;
-    line-height: 60px;
-    border-radius: 5px;
-    margin: 5px;
-    height: 60px;
-    width: 60px;
-`
+  text-align: center;
+  font-size: 36px;
+  line-height: 60px;
+  border-radius: 5px;
+  margin: 5px;
+  height: 60px;
+  width: 60px;
+`;
 const ItemToday = styled.div`
-    color: #39506f;
-    background-color: #bfedff;
-    user-select: none;
-    font-weight: 600;
-    cursor: pointer;
+  color: #39506f;
+  background-color: #bfedff;
+  user-select: none;
+  font-weight: 600;
+  cursor: pointer;
 
-    text-align: center;
-    font-size: 36px;
-    line-height: 60px;
-    border-radius: 5px;
-    margin: 5px;
-    height: 60px;
-    width: 60px;
-`
+  text-align: center;
+  font-size: 36px;
+  line-height: 60px;
+  border-radius: 5px;
+  margin: 5px;
+  height: 60px;
+  width: 60px;
+`;
 
 const ItemUnlocked = styled.div`
-    color: white;
-    background-color: #62a2bba1;
-    cursor: pointer;
-    font-weight: 600;
+  color: white;
+  background-color: #62a2bba1;
+  cursor: pointer;
+  font-weight: 600;
 
-    text-align: center;
-    font-size: 36px;
-    line-height: 60px;
-    border-radius: 5px;
-    margin: 5px;
-    height: 60px;
-    width: 60px;
-`
+  text-align: center;
+  font-size: 36px;
+  line-height: 60px;
+  border-radius: 5px;
+  margin: 5px;
+  height: 60px;
+  width: 60px;
+`;
 
-const LogoImg =  styled.img`
-    width: 100%;
-    margin: auto;
-`
+const LogoImg = styled.img`
+  width: 100%;
+  margin: auto;
+`;
 export const Hjem = () => {
-    const d = new Date();
-    const klokkeslett = d.getHours()
-    const dato = (d.getDate() > 24) ? 0 : d.getDate();
-    const [oppgaveValgt, setOppgaveValgt] = useState<number>(0)
-    const [visSvar, setVisSvar] = useState<boolean>(false)
+  const d = new Date();
+  const klokkeslett = d.getHours();
+  const dato = d.getDate() > 24 ? 0 : d.getDate();
+  const [visSvar, setVisSvar] = useState<boolean>(false);
 
-    return (
-        <Div>
-        <LogoImg src={logo}></LogoImg>
-            {oppgaveValgt === 0 && (
-                <div>
-            <h3>Velg en luke</h3>
-            <Grid>
-                {data.map((element) => {
-                    if(element.dag  === dato && klokkeslett >= 8){
-                        return <ItemToday
-                        onClick={() => {setOppgaveValgt(element.dag)}}
-                        >
-                            {element.dag}
-                        </ItemToday>;
-                    }else if(element.dag  < dato){
-                        return <ItemUnlocked
-                            onClick={() => { if ((element.dag <= dato)) { setOppgaveValgt(element.dag) } }}
-                            >
-                            {element.dag}
-                        </ItemUnlocked>
-                    }else{
-                        return <ItemLocked>{element.dag}</ItemLocked>
-                    }
-                })}
-            </Grid>
-            <Link to="/toppliste">Klikk her for å se topplisten</Link></div>
+  const { id } = useParams();
+  const oppgaveValgt = id ? Number(id) : 0;
+
+  return (
+    <Div>
+      <LogoImg src={logo}></LogoImg>
+      {oppgaveValgt === 0 && (
+        <div>
+          <h3>Velg en luke</h3>
+          <Grid>
+            {data.map((element) => {
+              if (element.dag === dato && klokkeslett >= 8) {
+                return (
+                  <ItemToday>
+                    <Link to={"/" + element.dag}>{element.dag}</Link>
+                  </ItemToday>
+                );
+              } else if (element.dag < dato) {
+                return (
+                  <ItemUnlocked>
+                    <Link to={"/" + element.dag}>{element.dag}</Link>
+                  </ItemUnlocked>
+                );
+              } else {
+                return <ItemLocked>{element.dag}</ItemLocked>;
+              }
+            })}
+          </Grid>
+          <Link to="/toppliste">Klikk her for å se topplisten</Link>
+        </div>
+      )}
+      {oppgaveValgt !== 0 && (
+        <Oppgaver>
+          <Link
+            onClick={() => {
+              setVisSvar(false);
+            }}
+            to={"/"}
+          >
+            Gå tilbake til oppgavene
+          </Link>
+          <Bordered>
+            <h3>Oppgave for {oppgaveValgt}. Desember:</h3>
+            {((oppgaveValgt === dato && klokkeslett >= 8) ||
+              oppgaveValgt < dato) && (
+              <p>
+                {
+                  data.find((element) => element.dag === oppgaveValgt)
+                    ?.beskrivelse
+                }
+              </p>
             )}
-            {oppgaveValgt !== 0 && (
-                <Oppgaver>
-                    <Link onClick={() => {setOppgaveValgt(0); setVisSvar(false);}} to={""}>Gå tilbake til oppgavene</Link>
-                    <Bordered>
-                        <h3>Oppgave for {oppgaveValgt}. Desember:</h3>
-                        {((oppgaveValgt === dato && klokkeslett >= 8) || (oppgaveValgt < dato)) && (
-                            <p>{data.find((element) => element.dag === oppgaveValgt)?.beskrivelse}</p>
-                        )}
-                        {(oppgaveValgt === dato && klokkeslett < 8) && (
-                            <p>Kommer kl. 08:00</p>
-                        )}
-                        {oppgaveValgt < dato && (
-                            <div>
-                                <h3>Hint:</h3>
-                                <p>{data.find((element) => element.dag === oppgaveValgt)?.hint}</p>
-                                <h3>Svar:</h3>
-                                <button onClick={() => setVisSvar(!visSvar)}>{visSvar ? 'Skjul' : 'Vis'} svar</button>
-                                {!visSvar && (
-                                    <Blurry>{data.find((element) => element.dag === oppgaveValgt)?.svar}</Blurry>
-                                )}
-                                {visSvar && (
-                                    <Answer>{data.find((element) => element.dag === oppgaveValgt)?.svar}</Answer>
-                                )}
-                            </div>
-                        )}
-                        {oppgaveValgt === dato && (
-                            <div>
-                                <h3>Hint:</h3>
-                                {klokkeslett >= 18 && (
-                                    <p>{data.find((element) => element.dag === oppgaveValgt)?.hint}</p>
-                                )}
-                                {klokkeslett < 18 && (
-                                    <p>Kommer klokken 18:00</p>
-                                )}
-                                <h3>Har du funnet ut løsningen?</h3>
-                                <a href="https://forms.gle/4fshYR6F6JTAwfWw9">Send inn svaret ditt her</a>
-                            </div>
-                        )}
-                    </Bordered>
-                </Oppgaver>
+            {oppgaveValgt === dato && klokkeslett < 8 && (
+              <p>Kommer kl. 08:00</p>
             )}
-        </Div>
-    )
-}
+            {oppgaveValgt < dato && (
+              <div>
+                <h3>Hint:</h3>
+                <p>
+                  {data.find((element) => element.dag === oppgaveValgt)?.hint}
+                </p>
+                <h3>Svar:</h3>
+                <button onClick={() => setVisSvar(!visSvar)}>
+                  {visSvar ? "Skjul" : "Vis"} svar
+                </button>
+                {!visSvar && (
+                  <Blurry>
+                    {data.find((element) => element.dag === oppgaveValgt)?.svar}
+                  </Blurry>
+                )}
+                {visSvar && (
+                  <Answer>
+                    {data.find((element) => element.dag === oppgaveValgt)?.svar}
+                  </Answer>
+                )}
+              </div>
+            )}
+            {oppgaveValgt === dato && (
+              <div>
+                <h3>Hint:</h3>
+                {klokkeslett >= 18 && (
+                  <p>
+                    {data.find((element) => element.dag === oppgaveValgt)?.hint}
+                  </p>
+                )}
+                {klokkeslett < 18 && <p>Kommer klokken 18:00</p>}
+                <h3>Har du funnet ut løsningen?</h3>
+                <a href="https://forms.gle/4fshYR6F6JTAwfWw9">
+                  Send inn svaret ditt her
+                </a>
+              </div>
+            )}
+          </Bordered>
+        </Oppgaver>
+      )}
+    </Div>
+  );
+};

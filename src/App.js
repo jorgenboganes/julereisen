@@ -10,12 +10,13 @@ import {
 
 function App() {
   return (
-    <div className="App" style={{height: "100%"}}>
+    <div className="App" style={{ height: "100%" }}>
       <Router>
         <Routes>
-          <Route path="/" element={<Hjem/>} />
-          <Route path="/julereisen" element={<Hjem/>} />
-          <Route path="/toppliste" element={<Toppliste/>} />
+          <Route path="/" element={<Hjem />} />
+          <Route path=":id" element={<Hjem />} />
+          <Route path="/julereisen" element={<Hjem />} />
+          <Route path="/toppliste" element={<Toppliste />} />
         </Routes>
       </Router>
     </div>

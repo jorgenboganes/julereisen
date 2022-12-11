@@ -47,9 +47,8 @@ const Third = styled.p`
 
 const Topp = styled.div`
   margin-top: 2rem;
-  
-`
-//https://docs.google.com/spreadsheets/d/1rgV7BDp3KFQUrk8asHNshyV3Zth8p8G7w-xV258CxB4/edit#gid=254437293
+`;
+
 const data: TopplisteEntry[] = [
     { navn: "Thor Magne Seland", score: 89} ,
     { navn: "Joakim D", score: 89} ,
