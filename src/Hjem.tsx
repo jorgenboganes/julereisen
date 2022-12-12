@@ -21,7 +21,7 @@ const data: OppgaveEntry[] = [
     { dag: 9, beskrivelse: "Ved Frognerseteren får du et brev fra en person som sier han skulle vært på vei til å motta en arvsbasert heder. Han er forhindret i hovedstaden til landet hvis fargebetegnelse har blitt avviklet. Hovedstaden du skal til ligger på sporet som går fra en hovedstad til grenselandet i vest, til en annen hovedstad i grenselandet i øst. Hovedstaden ga også navn til avtalene som skulle stoppe konflikter som i år har blusset opp og eskalert.", hint: "Etter oktober-endringen ble reisemålet hovedstad i en av de til sammen 15 som utgjorde den røde makten i nesten 7 tiår.", svar: "Minsk"},
     { dag: 10, beskrivelse: "I Minsk sitter du på en pub og drikker øl. Ølen er ikke lokal og plutselig setter det seg ned en mann som kaller seg Frederick som forteller deg at du drikker et øl som opprinnelig ble laget av han. Han vil ta deg med til byen som er godt kjent for sine bryggerikunster. Han gir deg også et bukkehorn med to ringer på, den ene med påskriften 2021. Monsteret som spredde frykt og dødsangst i byen og områdene rundt for noen tiår siden, har i år trollbundet en hel verden og gjenfortellingen ble den tredje i et univers, til å nå en milliard.", hint: "Byen grenser til noe som også har vært omtalt tidligere i reisen, og monsteret var også kjent for å være kannibal.", svar: "Milwaukee"},
     { dag: 11, beskrivelse: "I Milwaukee møter du en ond figur på en bok fra serien som etterfulgte filmen som var basert på eventyret om troens adel og lampen. Figuren sier du skal til en hovedstad hvor den hvite møter den blå og er dermed et veiskille for en av de lengste. Hovedstaden ligger i et land som grenser til det røde og tidligere inkluderte landet også verdens nyeste. En med navn satt sammen av den nye monarken og hans andre etterfølger har kallenavn etter reisemålet ditt. Han kjempet der, og også døde i kampene, mot den selvutnevnte profeterte frelseren.", hint: "Reisemålet ditt er syvende største by i et kontinent vi enda ikke har besøkt", svar: "Khartoum"},
-    { dag: 12, beskrivelse: "Kommer snart...", hint: "-", svar: "-"},
+    { dag: 12, beskrivelse: "I Khartoum finner du en avis og inni avisen har de en konkurranse hvor du kan vinne en tur. Konkurransen er et julekryssord som skal ta deg til hovedstaden du kan vinne tur til. Overrasket over hvor godt dette passer til din egen reise, bestemmer du deg for å løse kryssordet og reise til hovedstaden.", hint: "Alle hintene skal på en eller annen måte knyttes til julen, kan det hjelpe å sette «jul(e)» foran ordene du er usikker på? ", svar: "Santiago"},
     { dag: 13, beskrivelse: "Kommer snart...", hint: "-", svar: "-"},
     { dag: 14, beskrivelse: "Kommer snart...", hint: "-", svar: "-"},
     { dag: 15, beskrivelse: "Kommer snart...", hint: "-", svar: "-"},
@@ -127,6 +127,33 @@ const LogoImg =  styled.img`
     width: 100%;
     margin: auto;
 `
+
+const A =  styled.td`
+    width: 13px;
+    height: 7px;
+    background-color: white;
+    border: 1px solid black
+`
+const B =  styled.td`
+    width: 13px;
+    height: 7px;
+`
+const C =  styled.td`
+    width: 13px;
+    height: 7px;
+    background-color: yellow;
+    border: 1px solid black
+`
+
+const Kryssord = styled.table`
+width: 100%;
+text-align:left;
+color: black;
+border-top: 2px dotted black;
+border-bottom: 2px dotted black;
+padding-top: 10px;
+padding-bottom: 10px;
+`
 export const Hjem = () => {
     const d = new Date();
     const klokkeslett = d.getHours()
@@ -168,6 +195,36 @@ export const Hjem = () => {
                         <h3>Oppgave for {oppgaveValgt}. Desember:</h3>
                         {((oppgaveValgt === dato && klokkeslett >= 8) || (oppgaveValgt < dato)) && (
                             <p>{data.find((element) => element.dag === oppgaveValgt)?.beskrivelse}</p>
+                        )}
+                        {oppgaveValgt === 12 && (
+                        <div>
+                            <Kryssord>
+                                <tr>
+                                    <td>1. Ny juleserie</td><B></B><A></A><A></A><A></A><A></A><C></C><A></A><A></A><A></A><A></A>
+                                </tr>
+                                <tr>
+                                    <td>2. Reinsdyr</td><B></B><B></B><B></B><B></B><A></A><C></C><A></A><A></A><A></A><A></A>
+                                </tr>
+                                <tr>
+                                    <td>3. Kalender</td><B></B><B></B><B></B><B></B><A></A><C></C><A></A><A></A><A></A><A></A><A></A>
+                                </tr>
+                                <tr>
+                                    <td>4. Ventetid</td><A></A><A></A><A></A><A></A><A></A><C></C>
+                                </tr>
+                                <tr>
+                                    <td>5. Julereisen</td><B></B><B></B><A></A><A></A><A></A><C></C><A></A><A></A>
+                                </tr>
+                                <tr>
+                                    <td>6. Jomfru</td><B></B><A></A><A></A><A></A><A></A><C></C>
+                                </tr>
+                                <tr>
+                                    <td>7. Drikke</td><B></B><B></B><B></B><B></B><B></B><C></C><A></A><A></A><A></A><A></A>
+                                </tr>
+                                <tr>
+                                    <td>8. Kake</td><B></B><B></B><A></A><A></A><A></A><C></C>
+                                </tr>
+                            </Kryssord>
+                        </div>
                         )}
                         {(oppgaveValgt === dato && klokkeslett < 8) && (
                             <p>Kommer kl. 08:00</p>
