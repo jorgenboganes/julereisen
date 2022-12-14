@@ -75,6 +75,10 @@ const Grid = styled.div`
   margin-bottom: 15px;
   width: 80%;
   justify-content: space-around;
+
+  a{
+    text-decoration: none;
+  }
 `;
 const ItemLocked = styled.div`
   color: black;
@@ -91,6 +95,9 @@ const ItemLocked = styled.div`
   margin: 5px;
   height: 60px;
   width: 60px;
+  a{
+    text-decoration: none;
+  }
 `;
 const ItemToday = styled.div`
   color: #39506f;
@@ -106,6 +113,9 @@ const ItemToday = styled.div`
   margin: 5px;
   height: 60px;
   width: 60px;
+  a{
+    text-decoration: none;
+  }
 `;
 
 const ItemUnlocked = styled.div`
@@ -121,6 +131,9 @@ const ItemUnlocked = styled.div`
   margin: 5px;
   height: 60px;
   width: 60px;
+  a{
+    text-decoration: none;
+  }
 `;
 
 const LogoImg = styled.img`
@@ -154,6 +167,7 @@ const Kryssord = styled.table`
     padding-bottom: 10px;
 `
 
+
 export const Hjem = () => {
   const d = new Date();
   const klokkeslett = d.getHours();
@@ -173,15 +187,15 @@ export const Hjem = () => {
             {data.map((element) => {
               if (element.dag === dato && klokkeslett >= 8) {
                 return (
-                  <ItemToday>
-                    <Link to={"/" + element.dag}>{element.dag}</Link>
-                  </ItemToday>
+                    <Link to={"/" + element.dag}>
+                      <ItemToday>{element.dag}</ItemToday>
+                    </Link>
                 );
               } else if (element.dag < dato) {
                 return (
-                  <ItemUnlocked>
-                    <Link to={"/" + element.dag}>{element.dag}</Link>
-                  </ItemUnlocked>
+                  <Link to={"/" + element.dag}>
+                    <ItemUnlocked>{element.dag}</ItemUnlocked>
+                  </Link>
                 );
               } else {
                 return <ItemLocked>{element.dag}</ItemLocked>;
@@ -193,138 +207,75 @@ export const Hjem = () => {
       )}
       {oppgaveValgt !== 0 && (
         <Oppgaver>
-          <Link
-            onClick={() => {
-              setVisSvar(false);
-            }}
-            to={"/"}
-          >
-            Gå tilbake til oppgavene
-          </Link>
-          <Bordered>
+        <Link to="/">Gå tilbake til oppgavene</Link>
+        <Bordered>
             <h3>Oppgave for {oppgaveValgt}. Desember:</h3>
-            {((oppgaveValgt === dato && klokkeslett >= 8) ||
-              oppgaveValgt < dato) && (
-              <p>
-                {
-                  data.find((element) => element.dag === oppgaveValgt)
-                    ?.beskrivelse
-                }
-              </p>
+            {((oppgaveValgt === dato && klokkeslett >= 8) || (oppgaveValgt < dato)) && (
+                <p>{data.find((element) => element.dag === oppgaveValgt)?.beskrivelse}</p>
             )}
-            {oppgaveValgt === dato && klokkeslett < 8 && (
-              <p>Kommer kl. 08:00</p>
+            {oppgaveValgt === 12 && (
+            <div>
+                <Kryssord>
+                    <tr>
+                        <td>1. Ny juleserie</td><B></B><A></A><A></A><A></A><A></A><C></C><A></A><A></A><A></A><A></A>
+                    </tr>
+                    <tr>
+                        <td>2. Reinsdyr</td><B></B><B></B><B></B><B></B><A></A><C></C><A></A><A></A><A></A><A></A>
+                    </tr>
+                    <tr>
+                        <td>3. Kalender</td><B></B><B></B><B></B><B></B><A></A><C></C><A></A><A></A><A></A><A></A><A></A>
+                    </tr>
+                    <tr>
+                        <td>4. Ventetid</td><A></A><A></A><A></A><A></A><A></A><C></C>
+                    </tr>
+                    <tr>
+                        <td>5. Julereisen</td><B></B><B></B><A></A><A></A><A></A><C></C><A></A><A></A>
+                    </tr>
+                    <tr>
+                        <td>6. Jomfru</td><B></B><A></A><A></A><A></A><A></A><C></C>
+                    </tr>
+                    <tr>
+                        <td>7. Drikke</td><B></B><B></B><B></B><B></B><B></B><C></C><A></A><A></A><A></A><A></A>
+                    </tr>
+                    <tr>
+                        <td>8. Kake</td><B></B><B></B><A></A><A></A><A></A><C></C>
+                    </tr>
+                </Kryssord>
+            </div>
+            )}
+            {(oppgaveValgt === dato && klokkeslett < 8) && (
+                <p>Kommer kl. 08:00</p>
             )}
             {oppgaveValgt < dato && (
-              <div>
-                <h3>Hint:</h3>
-                <p>
-                  {data.find((element) => element.dag === oppgaveValgt)?.hint}
-                </p>
-                <h3>Svar:</h3>
-                <button onClick={() => setVisSvar(!visSvar)}>
-                  {visSvar ? "Skjul" : "Vis"} svar
-                </button>
-                {!visSvar && (
-                  <Blurry>
-                    {data.find((element) => element.dag === oppgaveValgt)?.svar}
-                  </Blurry>
-                )}
-                {visSvar && (
-                  <Answer>
-                    {data.find((element) => element.dag === oppgaveValgt)?.svar}
-                  </Answer>
-                )}
-              </div>
+                <div>
+                    <h3>Hint:</h3>
+                    <p>{data.find((element) => element.dag === oppgaveValgt)?.hint}</p>
+                    <h3>Svar:</h3>
+                    <button onClick={() => setVisSvar(!visSvar)}>{visSvar ? 'Skjul' : 'Vis'} svar</button>
+                    {!visSvar && (
+                        <Blurry>{data.find((element) => element.dag === oppgaveValgt)?.svar}</Blurry>
+                    )}
+                    {visSvar && (
+                        <Answer>{data.find((element) => element.dag === oppgaveValgt)?.svar}</Answer>
+                    )}
+                </div>
             )}
             {oppgaveValgt === dato && (
-              <div>
-                <h3>Hint:</h3>
-                {klokkeslett >= 18 && (
-                  <p>
-                    {data.find((element) => element.dag === oppgaveValgt)?.hint}
-                  </p>
-                )}
-                {klokkeslett < 18 && <p>Kommer klokken 18:00</p>}
-                <h3>Har du funnet ut løsningen?</h3>
-                <a href="https://forms.gle/4fshYR6F6JTAwfWw9">
-                  Send inn svaret ditt her
-                </a>
-              </div>
-            {oppgaveValgt !== 0 && (
-                <Oppgaver>
-                    <Link onClick={() => {setOppgaveValgt(0); setVisSvar(false);}} to={""}>Gå tilbake til oppgavene</Link>
-                    <Bordered>
-                        <h3>Oppgave for {oppgaveValgt}. Desember:</h3>
-                        {((oppgaveValgt === dato && klokkeslett >= 8) || (oppgaveValgt < dato)) && (
-                            <p>{data.find((element) => element.dag === oppgaveValgt)?.beskrivelse}</p>
-                        )}
-                        {oppgaveValgt === 12 && (
-                        <div>
-                            <Kryssord>
-                                <tr>
-                                    <td>1. Ny juleserie</td><B></B><A></A><A></A><A></A><A></A><C></C><A></A><A></A><A></A><A></A>
-                                </tr>
-                                <tr>
-                                    <td>2. Reinsdyr</td><B></B><B></B><B></B><B></B><A></A><C></C><A></A><A></A><A></A><A></A>
-                                </tr>
-                                <tr>
-                                    <td>3. Kalender</td><B></B><B></B><B></B><B></B><A></A><C></C><A></A><A></A><A></A><A></A><A></A>
-                                </tr>
-                                <tr>
-                                    <td>4. Ventetid</td><A></A><A></A><A></A><A></A><A></A><C></C>
-                                </tr>
-                                <tr>
-                                    <td>5. Julereisen</td><B></B><B></B><A></A><A></A><A></A><C></C><A></A><A></A>
-                                </tr>
-                                <tr>
-                                    <td>6. Jomfru</td><B></B><A></A><A></A><A></A><A></A><C></C>
-                                </tr>
-                                <tr>
-                                    <td>7. Drikke</td><B></B><B></B><B></B><B></B><B></B><C></C><A></A><A></A><A></A><A></A>
-                                </tr>
-                                <tr>
-                                    <td>8. Kake</td><B></B><B></B><A></A><A></A><A></A><C></C>
-                                </tr>
-                            </Kryssord>
-                        </div>
-                        )}
-                        {(oppgaveValgt === dato && klokkeslett < 8) && (
-                            <p>Kommer kl. 08:00</p>
-                        )}
-                        {oppgaveValgt < dato && (
-                            <div>
-                                <h3>Hint:</h3>
-                                <p>{data.find((element) => element.dag === oppgaveValgt)?.hint}</p>
-                                <h3>Svar:</h3>
-                                <button onClick={() => setVisSvar(!visSvar)}>{visSvar ? 'Skjul' : 'Vis'} svar</button>
-                                {!visSvar && (
-                                    <Blurry>{data.find((element) => element.dag === oppgaveValgt)?.svar}</Blurry>
-                                )}
-                                {visSvar && (
-                                    <Answer>{data.find((element) => element.dag === oppgaveValgt)?.svar}</Answer>
-                                )}
-                            </div>
-                        )}
-                        {oppgaveValgt === dato && (
-                            <div>
-                                <h3>Hint:</h3>
-                                {klokkeslett >= 18 && (
-                                    <p>{data.find((element) => element.dag === oppgaveValgt)?.hint}</p>
-                                )}
-                                {klokkeslett < 18 && (
-                                    <p>Kommer klokken 18:00</p>
-                                )}
-                                <h3>Har du funnet ut løsningen?</h3>
-                                <a href="https://forms.gle/4fshYR6F6JTAwfWw9">Send inn svaret ditt her</a>
-                            </div>
-                        )}
-                    </Bordered>
-                </Oppgaver>
+                <div>
+                    <h3>Hint:</h3>
+                    {klokkeslett >= 18 && (
+                        <p>{data.find((element) => element.dag === oppgaveValgt)?.hint}</p>
+                    )}
+                    {klokkeslett < 18 && (
+                        <p>Kommer klokken 18:00</p>
+                    )}
+                    <h3>Har du funnet ut løsningen?</h3>
+                    <a href="https://forms.gle/4fshYR6F6JTAwfWw9">Send inn svaret ditt her</a>
+                </div>
             )}
-          </Bordered>
-        </Oppgaver>
-      )}
+        </Bordered>
+    </Oppgaver>
+    )}
     </Div>
   );
 };
